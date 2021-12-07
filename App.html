@@ -1,0 +1,17 @@
+<div class="container">
+  {#await eventQuery}
+  <h2>Loading...</h2>
+  {:then events} {#each events.result.items as event (event.etag)}
+  <Event event="{event}" />
+  {:else}
+  <h2>No Events Found.</h2>
+  {/each} {/await}
+</div>
+
+<script>
+  import Event from "./components/Event.html";
+
+  export default {
+    components: { Event }
+  };
+</script>

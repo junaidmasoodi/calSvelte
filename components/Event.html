@@ -1,0 +1,23 @@
+<div class="event grid-container">
+  <div class="title">
+    {event.start.dateTime.slice(5, 7)}
+    <EventDetail class="title">{event.summary}</EventDetail>
+    {#if event.attendees} {#if event.attendees[0].responseStatus ==
+    "needsAction"}
+    <a href="{event.htmlLink}" target="_blank">RSVP</a>
+    {:else}
+    <a href="{event.htmlLink}" target="_blank">Joined</a>
+    {/if} {/if}
+  </div>
+</div>
+
+<script>
+  import moment from "moment-timezone";
+  import EventDetail from "./EventDetail.html";
+
+  export default {
+    components: {
+      EventDetail
+    }
+  };
+</script>
